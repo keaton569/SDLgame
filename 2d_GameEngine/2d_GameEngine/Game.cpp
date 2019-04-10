@@ -7,6 +7,7 @@
 
 
 
+
 GameObject* player;
 GameObject* enemy;
 Map* map;
@@ -91,7 +92,9 @@ void Game::update() {
 	player->Update();
 	enemy->Update();
 	manager.update();
-	//std:cout << newpla
+
+	std::cout << newPlayer.getComponent<PositionComponent>().x() << ", " <<
+	newPlayer.getComponent<PositionComponent>().y() << std::endl;
 
 }
 

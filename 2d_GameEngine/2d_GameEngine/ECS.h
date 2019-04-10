@@ -22,7 +22,7 @@ inline ComponentID getComponentTypeID() {
 template <typename T> inline ComponentID getComponentID() noexcept {
 
 	static ComponentID typeID = getComponentTypeID();
-	return typeID();
+	return typeID;
 }
 
 constexpr std::size_t maxComponents = 32;
@@ -58,7 +58,7 @@ public:
 	void destroy() { active = false; }
 
 	template <typename T> bool hasComponent() const {
-		return componentBitSet[getComponentID<T>];	
+		return componentBitSet[getComponentID<T>()];	
 	}
 
 
@@ -92,14 +92,6 @@ private:
 	ComponentArray componentArray;
 	ComponentBitSet componentBitSet;
 };
-
-Entity::Entity()
-{
-}
-
-Entity::~Entity()
-{
-}
 
 
 class Manager
@@ -144,11 +136,3 @@ private:
 
 
 };
-
-Manager::Manager()
-{
-}
-
-Manager::~Manager()
-{
-}
